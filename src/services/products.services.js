@@ -13,7 +13,12 @@ class ProductsServices {
   static async getAll() {
     try {
       const result = await Products.findAll();
-      return result;
+      const allProducts = result.map(product => {
+         if(product.availableQty > 0){
+          return product
+         }
+      });
+      return allProducts;
     } catch (error) {
       throw error;
     }
