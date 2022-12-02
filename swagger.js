@@ -5,13 +5,14 @@ const options = {
   definition: {
     openapi: "3.0.0", // standar open Api que estamos usando
     info: {
-      title: "Clon de un ecommerce",
+      title: "Ecommerce API",
       version: "1.0.0",
       description: "API que sirve para poder realizar un ecommerce",
     },
   },
   apis: [
-    
+    "./src/routes/users.routes.js",
+    "./src/models/users.models.js"
   ],
 };
 

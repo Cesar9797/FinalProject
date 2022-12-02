@@ -9,7 +9,10 @@ const authenticateUser = async (req, res, next) => {
       const user = {id, username, email, password};
       const token = AuthenticationServices.genToken(user);
       user.token = token;
-      res.json({...user});
+      res.json({
+        status: "OK",
+        token
+      });
     } else {
       res.json({message: 'Invalid info'})
     }

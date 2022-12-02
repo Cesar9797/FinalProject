@@ -4,7 +4,11 @@ class UserServices {
   static async create(newUser) {
     try {
       const userCreated = await Users.create(newUser);
-      return userCreated;
+      return {
+        id: userCreated.id,
+        username: userCreated.username,
+        email: userCreated.email,
+      };
     } catch (error) {
       throw error;
     }
