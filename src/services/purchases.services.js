@@ -7,7 +7,7 @@ class PurchasesServices {
     const result = await Carts.findOne({
       where: {userId}
     });
-    result.status = "active";
+    result.status = "purshased";
     await result.save();
     const changeProductInCart = await ProductsInCart.findAll({
       where: {cartId: result.id},
@@ -17,7 +17,7 @@ class PurchasesServices {
     });
     console.log(changeProductInCart);
     changeProductInCart.forEach(productincart => {
-      productincart.status = "selected";
+      productincart.status = "purshased";
       productincart.save();
     });
    } catch (error) {

@@ -3,7 +3,7 @@ const {Carts, ProductsInCart, Products, Users} = require('../models');
 class CartServices {
   static async addProduct (newProduct, userId) {
     try {
-      const data = {...newProduct, userId};
+      const data = {...newProduct};
       const {productId} = newProduct;
       const resultProducts = await Products.findOne({
         where: {id: productId}
@@ -22,12 +22,18 @@ class CartServices {
           const resultAdd = await ProductsInCart.create({...data, cartId
           });
           return resultAdd;
-        } else {
+        } else if (existCart && existCart.status === "active") {
           const cartId = existCart.id;
           const resultAdd = await ProductsInCart.create({...data, cartId});
           return resultAdd;
+        } else if (existCart && existCart.status === "purshased"){
+          const result = await Carts.create({
+            userId
+          });
+          const cartId = result.id;
+          const resultAdd = await ProductsInCart.create({...data, cartId});
+          return resultAdd
         }
-        console.log(resultAdd);
         // return {message: 'pendiente'} 
       }
     } catch (error) {
