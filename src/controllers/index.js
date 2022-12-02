@@ -3,6 +3,7 @@ const {createProducts, /*getProductsByUserId*/ getAllProducts} = require('./prod
 const {addProductToCart, getProductsInCart} = require('./cart.controllers');
 const {authenticateUser} = require('./auth.controllers');
 const {changeToPurchased} = require('./purchased.controllers');
+const { createOrderWhitProducts, getAllOrders} = require('./orders.controllers');
 
 module.exports = {
   userRegister, getAllUsers,
@@ -11,5 +12,7 @@ module.exports = {
   authenticateUser,
   getAllProducts,
   changeToPurchased,
-  getProductsInCart
+  getProductsInCart,
+  createOrderWhitProducts,
+  getAllOrders
 }

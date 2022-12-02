@@ -30,6 +30,16 @@ const ProductsInOrder = db.define('productsinorder', {
     type: DataTypes.ENUM('on hold', 'purshased'),
     defaultValue: 'on hold'
   }
+},
+{
+  hooks: {
+    beforeCreate: (product, options) => {
+      const price = product.price;
+      const quantity = product.quantity;
+      const totalPrice = price * quantity;
+      product.price = totalPrice;
+    }
+  }
 });
 
 module.exports = ProductsInOrder;
