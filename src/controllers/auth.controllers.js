@@ -10,7 +10,7 @@ const authenticateUser = async (req, res, next) => {
       const token = AuthenticationServices.genToken(user);
       user.token = token;
       res.json({
-        status: "OK",
+        status: "success",
         token
       });
     } else {

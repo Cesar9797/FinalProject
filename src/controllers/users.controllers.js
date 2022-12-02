@@ -4,7 +4,10 @@ const userRegister = async (req, res, next) => {
   try {
     const newUser = req.body;
     const result = await UserServices.create(newUser);
-    res.json(result);
+    res.json({
+      status: "success",
+      response: "User created"
+    });
   } catch (error) {
     next({
       status: 400,
@@ -17,7 +20,10 @@ const userRegister = async (req, res, next) => {
 const getAllUsers = async (req, res, next) => {
   try {
     const users = await UserServices.getAll();
-    res.json(users);
+    res.json({
+      status: "success",
+      users
+    });
   } catch (error) {
     next({
       status: 400,

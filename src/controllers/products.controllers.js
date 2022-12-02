@@ -4,7 +4,10 @@ const createProducts = async (req, res, next) => {
   try {
     const newProduct = req.body;
     const result = await ProductsServices.create(newProduct);
-    res.json(result);
+    res.json({
+      status: "succes",
+      message: "Product created"
+    });
   } catch (error) {
     next({
       status: 400,
@@ -17,7 +20,10 @@ const createProducts = async (req, res, next) => {
 const getAllProducts = async (req, res, next) => {
   try {
     const allProducts = await ProductsServices.getAll();
-    res.json(allProducts);
+    res.json({
+      status: "success",
+      products: allProducts
+    });
   } catch (error) {
     next({
       status: 400,

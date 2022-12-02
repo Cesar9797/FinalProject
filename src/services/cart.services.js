@@ -1,4 +1,4 @@
-const {Carts, ProductsInCart, Products} = require('../models');
+const {Carts, ProductsInCart, Products, Users} = require('../models');
 
 class CartServices {
   static async addProduct (newProduct, userId) {
@@ -30,6 +30,31 @@ class CartServices {
         console.log(resultAdd);
         // return {message: 'pendiente'} 
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getAllProducts(userId){
+    try {
+      const products = await Carts.findOne({
+        where: {userId, status: 'active'},
+        attributes: ['id', 'userId', 'status'],
+        include: [
+          {
+            model: ProductsInCart,
+            as: 'products',
+            attributes: ['id', 'cartId', 'productId', 'quantity', 'price', 'status'],
+            include: {
+              model: Products,
+              as: "product",
+              attributes: ['id', 'name', 'price']
+            }
+          },
+        ]
+        
+      });
+      return products;
     } catch (error) {
       throw error;
     }

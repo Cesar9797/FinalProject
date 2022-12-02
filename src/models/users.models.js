@@ -18,9 +18,6 @@ const bcrypt = require('bcrypt');
  *        email:
  *          type: string
  *          example: cesar@gmail.com
- *        password:
- *          type: string
- *          example: "123"
  *        createdAt: 
  *          type: string
  *          example: 2022-11-24T00:50:00.611Z

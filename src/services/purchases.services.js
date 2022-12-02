@@ -7,7 +7,7 @@ class PurchasesServices {
     const result = await Carts.findOne({
       where: {userId}
     });
-    result.status = "purshased";
+    result.status = "active";
     await result.save();
     const changeProductInCart = await ProductsInCart.findAll({
       where: {cartId: result.id},

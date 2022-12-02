@@ -18,7 +18,7 @@ class UserServices {
     try {
       const users = Users.findAll({
         attributes: {
-          exclude: ['password', 'createdAt', 'updatedAt']
+          exclude: ['password', 'updatedAt']
         }
       });
       return users;  

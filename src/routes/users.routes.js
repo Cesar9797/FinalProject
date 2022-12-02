@@ -26,11 +26,10 @@ const authenticate = require('../middlewares/auth.middleware');
  *                properties:
  *                  status: 
  *                    type: string
- *                    example: OK
- *                  data: 
- *                    type: array
- *                    items:
- *                      $ref: "#/components/schemas/users"
+ *                    example: success
+ *                  response: 
+ *                    type: string
+ *                    example: User created
  *   get:
  *      security:
  *        - bearerAuth: []
@@ -46,7 +45,7 @@ const authenticate = require('../middlewares/auth.middleware');
  *                properties:
  *                  status:
  *                    type: string
- *                    example: OK
+ *                    example: success
  *                  data:
  *                    type: array
  *                    items: 

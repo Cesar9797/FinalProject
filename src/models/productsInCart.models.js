@@ -30,6 +30,15 @@ const ProductsInCart = db.define('productsincart', {
     type: DataTypes.ENUM('selected', 'purshased'),
     defaultValue: 'selected'
   }
+},{
+  hooks: {
+    beforeCreate: (product, options) => {
+      const {price} = product;
+      const {quantity} = product;
+      const totalPrice = price * quantity;
+      product.price = totalPrice;
+    }
+  }
 })
 
 module.exports = ProductsInCart

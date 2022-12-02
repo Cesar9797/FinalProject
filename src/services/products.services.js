@@ -15,7 +15,7 @@ class ProductsServices {
       const result = await Products.findAll();
       const allProducts = result.map(product => {
          if(product.availableQty > 0){
-          return product
+          return product;
          }
       });
       return allProducts;
