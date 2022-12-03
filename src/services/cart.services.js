@@ -1,4 +1,4 @@
-const {Carts, ProductsInCart, Products, Users} = require('../models');
+const {Carts, ProductsInCart, Products, Orders, ProductsInOrder} = require('../models');
 
 class CartServices {
   static async addProduct (newProduct, userId) {
@@ -36,6 +36,45 @@ class CartServices {
         }
         // return {message: 'pendiente'} 
       }
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async createOrder(userId, newProduct) {
+    try {
+     const order = await Orders.findOne({
+      where: {
+        userId
+      }
+     });
+     console.log(order);
+     if(order.id === undefined || null){
+      console.log(order.id);
+      const newOrder = await Orders.create({
+        userId
+      });
+      const orderId = newOrder.id;
+      const products = await ProductsInOrder.create({
+        ...newProduct, orderId
+      });
+      return {message: "No se encontro orden y se creo"}
+     } else if (order && order.status === "open"){
+      const orderId = order.id;
+      const products = await ProductsInOrder.create({
+        ...newProduct, orderId
+      });
+      return {message: "Se encontro una orden y se agrego el producto a esa orden"}
+     } else if (order && order.status === "finished"){
+      const order = await Orders.create({
+        userId
+      });
+      const orderId = order.id;
+      const products = await ProductsInOrder.create({
+        ...newProduct, orderId
+      });
+      return {message: "Se encontro una orden pero estaba finalizada asi que se crea una nueva"}
+     }
     } catch (error) {
       throw error;
     }
