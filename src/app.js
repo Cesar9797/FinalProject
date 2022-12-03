@@ -30,11 +30,7 @@ app.use(cors());
 //   console.log('Bienvenidos')
 // });
 
-app.use('/', (req, res, next) => {
-  res.json({
-    message: `visit the documentación in ${process.env.DOMAIN}/api/v1/docs`
-  })
-})
+
 app.use('/api/v1', usersRoutes);
 app.use('/api/v1', productsRoutes);
 app.use('/api/v1', productsInCartRoutes);
