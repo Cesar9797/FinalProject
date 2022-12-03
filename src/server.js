@@ -5,6 +5,6 @@ const swaggerDocs = require('../swagger');
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
-  console.log('Servidor corriendo correctamente');
+  console.log('Servidor corriendo correctamente en el puerto' + PORT );
   swaggerDocs(app, PORT);
 })
