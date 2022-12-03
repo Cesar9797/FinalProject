@@ -37,7 +37,7 @@ const swaggerDocs = (app, port) => {
   });
   //
   console.log(
-    `Documentación disponible en ${process.env.DOMAIN}/api/v1/docs/`
+    `Documentación disponible en ${process.env.DOMAIN}/api/v1/docs`
   );
 };
 
