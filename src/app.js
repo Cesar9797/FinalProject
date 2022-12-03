@@ -32,7 +32,7 @@ app.use(cors());
 
 app.use('/', (req, res, next) => {
   res.json({
-    message: `visit the documentación in ${process.env.DB_HOST}`
+    message: `visit the documentación in ${process.env.DOMAIN}`/api/v1/docs
   })
 })
 app.use('/api/v1', usersRoutes);
