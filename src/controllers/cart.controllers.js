@@ -7,12 +7,15 @@ const addProductToCart = async (req, res, next) => {
     const userId = id;
     const result = await CartServices.addProduct(newProduct, userId);
     const resultOrder = await CartServices.createOrder(userId, newProduct)
-    res.json(resultOrder);
+    res.json({
+      status: "success",
+      message: "Product added to cart"
+    });
   } catch (error) {
     next({
       status: 400,
       errorContent: error,
-      message: 'Hola'
+      message: 'Fallo al agregar el producto al carrito'
     })
   }
 }

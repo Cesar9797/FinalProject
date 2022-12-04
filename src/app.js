@@ -7,7 +7,7 @@ const db = require('./utils/database');
 const handleError = require('./middlewares/error.middleware');
 const initModels = require('./models/initModels');
 const {usersRoutes, productsRoutes, 
-  productsInCartRoutes, authenticateRoute, purchasedRoute,
+  productsInCartRoutes, authenticateRoute, purchasedRoute, ordersRoutes,
   } = require('./routes');
 
 initModels();
@@ -35,6 +35,7 @@ app.use('/api/v1', productsRoutes);
 app.use('/api/v1', productsInCartRoutes);
 app.use('/api/v1', authenticateRoute);
 app.use('/api/v1/', purchasedRoute);
+app.use('/api/v1/', ordersRoutes);
 
 
 

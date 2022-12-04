@@ -43,14 +43,12 @@ class CartServices {
 
   static async createOrder(userId, newProduct) {
     try {
-     const order = await Orders.findOne({
+     const orders = await Orders.findOne({
       where: {
         userId
-      }
-     });
-     console.log(order);
-     if(order.id === undefined || null){
-      console.log(order.id);
+      },
+      });
+     if(!orders){  
       const newOrder = await Orders.create({
         userId
       });
@@ -59,13 +57,13 @@ class CartServices {
         ...newProduct, orderId
       });
       return {message: "No se encontro orden y se creo"}
-     } else if (order && order.status === "open"){
-      const orderId = order.id;
+     } else if (orders && orders.status === "open"){
+      const orderId = orders.id;
       const products = await ProductsInOrder.create({
         ...newProduct, orderId
       });
       return {message: "Se encontro una orden y se agrego el producto a esa orden"}
-     } else if (order && order.status === "finished"){
+     } else if (orders && orders.status === "finished"){
       const order = await Orders.create({
         userId
       });

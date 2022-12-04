@@ -9,7 +9,7 @@ const authenticate = require('../middlewares/auth.middleware')
  *    post:
  *      security:
  *        - bearerAuth: []
- *      summary: Buy the whole cart
+ *      summary: Buy cart and finished order
  *      tags: [purchases]
  *      responses:
  *        200:

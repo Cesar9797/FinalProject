@@ -67,6 +67,9 @@ const {DataTypes} = require('sequelize');
   *                  availableQty:
   *                    type: integer
   *                    example: 91
+  *                  userId:
+  *                    type: integer
+  *                    example: 1
   *                      
  */
 

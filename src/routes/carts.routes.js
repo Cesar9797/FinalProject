@@ -9,7 +9,7 @@ const {addProductToCart, getProductsInCart} = require('../controllers');
  *   post:
  *      security:
  *          - bearerAuth: []
- *      summary: Add product to cart
+ *      summary: Add product to cart and create order
  *      requestBody:
  *        description: To add product in cart you need productId, quantity, price
  *        required: true

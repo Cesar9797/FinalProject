@@ -34,86 +34,86 @@ const products = [
   }
 ];
 
-const carts = [
-  {
-    userId: 1,
-    totalPrice: 45000
-  },
-  {
-    userId: 2,
-    totalPrice: 9000
-  },
-  {
-    userId: 3,
-    totalPrice: 45000
-  }
-];
+// const carts = [
+//   {
+//     userId: 1,
+//     totalPrice: 45000
+//   },
+//   {
+//     userId: 2,
+//     totalPrice: 9000
+//   },
+//   {
+//     userId: 3,
+//     totalPrice: 45000
+//   }
+// ];
 
-const orders = [
-  {
-    totalPrice: 45000,
-    userId: 1,
-    status: 'open'
-  },
-  {
-    totalPrice: 9000,
-    userId: 2,
-    status: 'open'
-  },
-  {
-    totalPrice: 45000,
-    userId: 1,
-    status: 'finished'
-  },
-];
+// const orders = [
+//   {
+//     totalPrice: 45000,
+//     userId: 1,
+//     status: 'open'
+//   },
+//   {
+//     totalPrice: 9000,
+//     userId: 2,
+//     status: 'open'
+//   },
+//   {
+//     totalPrice: 45000,
+//     userId: 1,
+//     status: 'finished'
+//   },
+// ];
 
-const productsincart = [
-  {
-    cartId: 1,
-    productId: 2,
-    quantity: 1,
-    price: 45000,
-    status: 'selected', // current or purshased
-  },
-  {
-    cartId: 2,
-    productId: 3,
-    quantity: 1,
-    price: 9000,
-    status: 'selected'
-  },
-  {
-    cartId: 3,
-    productId: 2,
-    quantity: 1,
-    price: 45000,
-    status: 'purshased'
-  },
-];
+// const productsincart = [
+//   {
+//     cartId: 1,
+//     productId: 2,
+//     quantity: 1,
+//     price: 45000,
+//     status: 'selected', // current or purshased
+//   },
+//   {
+//     cartId: 2,
+//     productId: 3,
+//     quantity: 1,
+//     price: 9000,
+//     status: 'selected'
+//   },
+//   {
+//     cartId: 3,
+//     productId: 2,
+//     quantity: 1,
+//     price: 45000,
+//     status: 'purshased'
+//   },
+// ];
 
-const productsinorder = [
-  {
-    orderId: 1,
-    productId: 2,
-    quantity: 1,
-    price: 45000,
-    status: 'on hold' // on hold, purshased
-  },
-  {
-    orderId: 2,
-    productId: 3,
-    quantity: 1,
-    price: 9000,
-    status: 'on hold'
-  },
-  {
-    orderId: 3,
-    productId: 2,
-    quantity: 1,
-    price: 45000,
-    status: 'on hold'
-  }
-];
+// const productsinorder = [
+//   {
+//     orderId: 1,
+//     productId: 2,
+//     quantity: 1,
+//     price: 45000,
+//     status: 'on hold' // on hold, purshased
+//   },
+//   {
+//     orderId: 2,
+//     productId: 3,
+//     quantity: 1,
+//     price: 9000,
+//     status: 'on hold'
+//   },
+//   {
+//     orderId: 3,
+//     productId: 2,
+//     quantity: 1,
+//     price: 45000,
+//     status: 'on hold'
+//   }
+// ];
 
 
 db.sync({force: true}).then(() => {
@@ -123,21 +123,21 @@ db.sync({force: true}).then(() => {
     products.forEach(async (product) => Products.create(product));
   }, 200);
 
-  setTimeout(() => {
-    carts.forEach(async (cart) => Carts.create(cart));
-  }, 400);
+  // setTimeout(() => {
+  //   carts.forEach(async (cart) => Carts.create(cart));
+  // }, 400);
 
-  setTimeout(() => {
-    orders.forEach(async (order) => Orders.create(order));
-  }, 600);
+  // setTimeout(() => {
+  //   orders.forEach(async (order) => Orders.create(order));
+  // }, 600);
 
-  setTimeout(() => {
-    productsincart.forEach(async (productincart) => ProductsInCart.create(productincart));
-  }, 800);
+  // setTimeout(() => {
+  //   productsincart.forEach(async (productincart) => ProductsInCart.create(productincart));
+  // }, 800);
 
-  setTimeout(() => {
-    productsinorder.forEach(async (productinorder) => ProductsInOrder.create(productinorder));
-  }, 1000)
+  // setTimeout(() => {
+  //   productsinorder.forEach(async (productinorder) => ProductsInOrder.create(productinorder));
+  // }, 1000)
 });
 
 
