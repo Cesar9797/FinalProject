@@ -15,7 +15,7 @@ const getOrders = async (req, res, next) => {
       errorContent: error,
       message: "Fallo en la petición de las ordenes"
     })
-  }
+  } 
 };
 
 module.exports = {getOrders};
