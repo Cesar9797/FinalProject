@@ -32,7 +32,6 @@ const swaggerDocs = (app, port) => {
 
   app.use("", (req,res,next) => {
     res.json({message: `Documentación disponible en ${process.env.DOMAIN}/api/v1/docs`});
-    next();
   })
   // manejador para la ruta de nuestra documentación
   app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
