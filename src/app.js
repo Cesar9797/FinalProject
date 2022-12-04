@@ -31,6 +31,7 @@ app.use(cors());
 
 app.use('', (req, res, next) => {
   res.json({message: `Documentación disponible en ${process.env.DOMAIN}/api/v1/docs`});
+  next();
 })
 app.use('/api/v1', usersRoutes);
 app.use('/api/v1', productsRoutes);
