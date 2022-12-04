@@ -30,8 +30,8 @@ app.use('/api/v1', usersRoutes);
 app.use('/api/v1', productsRoutes);
 app.use('/api/v1', productsInCartRoutes);
 app.use('/api/v1', authenticateRoute);
-app.use('/api/v1/', purchasedRoute);
-app.use('/api/v1/', ordersRoutes);
+app.use('/api/v1', purchasedRoute);
+app.use('/api/v1', ordersRoutes);
 
 
 
