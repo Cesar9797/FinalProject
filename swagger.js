@@ -1,5 +1,6 @@
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require("swagger-ui-express");
+require('dotenv').config();
 
 const options = {
   definition: {
@@ -28,6 +29,11 @@ const swaggerSpec = swaggerJSDoc(options);
 // función para configruar la documentación
 // dos parametros --> app expres, port donde se ejecuta
 const swaggerDocs = (app, port) => {
+
+  app.use("", (req,res,next) => {
+    res.json({message: `Documentación disponible en ${process.env.DOMAIN}/api/v1/docs`});
+    next();
+  })
   // manejador para la ruta de nuestra documentación
   app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   // podemos definir nuestra documentación en formato json
