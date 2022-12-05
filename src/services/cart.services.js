@@ -16,14 +16,19 @@ class CartServices {
         });
         if(!existCart){
           const result = await Carts.create({
-            userId
+            userId,
+
           });
+          result.totalPrice = data.quantity * data.price;
+          await result.save();
           const cartId = result.id;
           const resultAdd = await ProductsInCart.create({...data, cartId
           });
           return resultAdd;
         } else if (existCart && existCart.status === "active") {
           const cartId = existCart.id;
+          existCart.totalPrice = data.quantity * data.price + existCart.totalPrice;
+          await existCart.save();
           const resultAdd = await ProductsInCart.create({...data, cartId});
           return resultAdd;
         } else if (existCart && existCart.status === "purshased"){
@@ -31,6 +36,8 @@ class CartServices {
             userId
           });
           const cartId = result.id;
+          result.totalPrice = data.quantity * data.price;
+          await result.save();
           const resultAdd = await ProductsInCart.create({...data, cartId});
           return resultAdd
         }
@@ -82,7 +89,7 @@ class CartServices {
     try {
       const products = await Carts.findOne({
         where: {userId, status: 'active'},
-        attributes: ['id', 'userId', 'status'],
+        attributes: ['id', 'userId', 'status', 'totalPrice'],
         include: [
           {
             model: ProductsInCart,
