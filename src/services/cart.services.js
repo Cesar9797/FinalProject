@@ -60,12 +60,16 @@ class CartServices {
         userId
       });
       const orderId = newOrder.id;
+      newOrder.totalPrice = newProduct.quantity * newProduct.price;
+      await newOrder.save();
       const products = await ProductsInOrder.create({
         ...newProduct, orderId
       });
       return {message: "No se encontro orden y se creo"}
      } else if (orders && orders.status === "open"){
       const orderId = orders.id;
+      orders.totalPrice = newProduct.quantity * newProduct.price + orders.totalPrice;
+      await orders.save();
       const products = await ProductsInOrder.create({
         ...newProduct, orderId
       });
@@ -75,6 +79,8 @@ class CartServices {
         userId
       });
       const orderId = order.id;
+      order.totalPrice = newProduct.quantity * newProduct.price;
+      await order.save();
       const products = await ProductsInOrder.create({
         ...newProduct, orderId
       });
